@@ -1,5 +1,5 @@
 import React from "react";
-import {  ErrorDiv, Input, FieldDiv } from "../../styles/component"
+import {ErrorDiv, Input, FieldDiv, EmptyDiv} from "../../styles/component"
 
 export const MyAddressInput = ({ register, errors, label, validaton }) => {
     const changeFunc = (e) => {
@@ -16,8 +16,12 @@ export const MyAddressInput = ({ register, errors, label, validaton }) => {
             {...reg}
             message={message}
             />
-            {errors[label] &&
-                    <ErrorDiv errors={errors}>{errors[label] ? errors[label]?.message : ""}</ErrorDiv>}
+            {!errors[label] ?
+                <EmptyDiv errors={errors}>The field is required!!!</EmptyDiv>
+                :
+                <ErrorDiv>
+                    {errors[label] ? errors[label]?.message : ""}
+                </ErrorDiv>}
         </FieldDiv>
     );
 };

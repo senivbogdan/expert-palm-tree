@@ -20,7 +20,11 @@ export const WrapperDiv = styled.div`
 
 export const Div = styled.div`
   display: flex;
+`
 
+export const EmptyDiv = styled.div`
+  font-size: 14px;
+  opacity: ${props => props.message ? "1" : "0"}
 `
 
 export const FildsDiv = styled.div`
@@ -64,6 +68,7 @@ export const CheckBox = styled.input`
 export const ErrorDiv = styled.div`
   color: #ff0000;
   font-size: 14px;
+  //display: ${props => props.errors ? "flex" : "none"};
 `
 
 export const ButtonSubmit = styled.button`
@@ -79,8 +84,6 @@ export const ButtonSubmit = styled.button`
   cursor: pointer;
   margin: 40px 0;
   padding: 20px;
-  width: 50%;
-
   :hover {
     background: #bf1650;
   }

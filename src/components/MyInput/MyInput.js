@@ -1,5 +1,5 @@
 import React from "react";
-import {FieldDiv, Input, ErrorDiv, Div} from "../../styles/component"
+import {FieldDiv, Input, ErrorDiv, EmptyDiv} from "../../styles/component"
 
 export const MyInput = ( { register, errors, label, validaton } ) => {
     let message = errors?.[label]?.message
@@ -13,12 +13,14 @@ export const MyInput = ( { register, errors, label, validaton } ) => {
                     type="text"
                     inputRef={register}
                     {...reg}
-                    message={message}
-                ></Input>
-                {errors[label] &&
-                    <ErrorDiv errors={errors}><Div>
-                        {errors[label]?.message || `* does not pass validation`}
-                    </Div></ErrorDiv>}
+                    message={message}>
+                </Input>
+                        {!errors[label] ?
+                            <EmptyDiv errors={errors}>asdasdasdasdasdasd</EmptyDiv>
+                        :
+                            <ErrorDiv>
+                                {errors[label]?.message || `* does not pass validation`}
+                            </ErrorDiv>}
             </FieldDiv>
         </>
     );
